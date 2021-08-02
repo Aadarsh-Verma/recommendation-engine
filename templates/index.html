@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
-    {#    {% load static %}#}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/my.css' %}">
+
     <br>
     <form method="POST" class="form_class">
         {% csrf_token %}
@@ -70,6 +72,6 @@
         </div>
     {% endif %}
 
-{#    <h2>{{ time_taken }}</h2>#}
+    {#    <h2>{{ time_taken }}</h2>#}
     {% include 'autocomplete.html' %}
 {% endblock content %}
