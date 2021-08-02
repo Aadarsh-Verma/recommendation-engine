@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block content %}
+    {#    {% load static %}#}
+    <br>
+    <form method="POST" class="form_class">
+        {% csrf_token %}
+        <div class="form-div">
+            <span class="h2">Enter Movie Name</span>
+            <input type="text" name="moviename" id="search">
+            <input type="submit" class="button is-danger">
+        </div>
+    </form>
+    <hr>
+    {% if not_found %}
+        Sorry The movie is not in our Database<br>
+        Please try some other movie name
+    {% elif movies %}
+        <div class="container-fluid text-center">
+            <span class="mx-auto h1">{{ movie_info.title }}</span>
+        </div>
+        <div class="row">
+            <figure class="">
+                <img src="{{ image }}" class="image movie_poster">
+            </figure>
+            <div class="col ml-lg-5 h5 " id="movie_info">
+                <h5 class="h5">Title: {{ movie_info.title }}</h5>
+                <span>Overview: {{ movie_info.overview }}</span>
+                <h5>Rating: {{ movie_info.vote_average }}({{ movie_info.vote_count }} votes)</h5>
+                <h5>Genre: {{ genre_info }}</h5>
+                <h5>Release Date: {{ movie_info.release_date }}</h5>
+                <h5>Original Language: {{ movie_info.original_language }}</h5>
+            </div>
+
+        </div>
+
+        <div class="container-fluid text-center">
+            <span class="h2">CAST</span>
+        </div>
+
+
+        <div class="row ml-lg-5">
+            {% for actor in cast_info %}
+                <div class="col-lg-3" id="cast" style="width: 245px;">
+                    <div class="card" style="width: 240px">
+                        <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2{{ actor.profile_path }}"
+                             class="card-img-top" alt="...">
+                        <div class="card-body" style="height: 120px">
+                            <h5 class="card-title h5">{{ actor.name }}</h5>
+                            <p class="card-text">Character :{{ actor.character }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="container-fluid text-center mt-4">
+            <span class="h2">RECOMMENDED MOVIES</span>
+        </div>
+        <div class="row ml-lg-5">
+            {% for movie in movies_with_posters %}
+                <div class="col-lg-3" id="cast" style="width: 245px;">
+                    <div class="card" style="width: 240px">
+                        <img src="{{ movie.1 }}"
+                             class="card-img-top" alt="...">
+                        <div class="card-body" style="height: 120px">
+                            <h5 class="card-title h5">{{ movie.0 }}</h5>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <h2>{{ time_taken }}</h2>
+    {% include 'autocomplete.html' %}
+{% endblock content %}

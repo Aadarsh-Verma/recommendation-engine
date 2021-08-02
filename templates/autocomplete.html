@@ -1,0 +1,11 @@
+<script>
+
+    $(document).ready(function () {
+
+        const search = $('#search')
+        console.log(search)
+        $("#search").autocomplete({
+            source: "{% url 'autocomplete' %}"
+        });
+    });
+</script>

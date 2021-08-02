@@ -1,0 +1,62 @@
+
+body{
+    /*word-spacing: 1px;*/
+    letter-spacing: 1px;
+}
+#search {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-radius: 50px;
+    width: 600px;
+    background: #d5d5c3;
+    margin: 0 15px 0 15px;
+}
+.form-div span{
+    margin-left: 70px;
+}
+
+.form-div input[type=submit]{
+    border-radius: 50px;
+    margin-top: 5px;
+    background-color: #ff0000;
+    color: black;
+}
+
+.row{
+    color: #eaeae1;
+}
+
+.movie_poster {
+    height: 400px;
+    width: 250px;
+    border-radius: 25px;
+    margin-left: 90px;
+}
+
+.media {
+    margin-left: 50px;
+}
+
+#movie_info h5 {
+    margin-top: 20px;
+}
+
+#movie_info span {
+    display: block;
+    margin-top: 20px;
+    width: 70%;
+}
+
+/*Cast*/
+
+#cast {
+    margin-top: 20px;
+}
+
+#cast img {
+    border: 1px solid white;
+    height: 360px;
+    width: 240px;
+    border-radius: 4px;
+}
