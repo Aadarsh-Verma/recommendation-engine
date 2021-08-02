@@ -24,7 +24,7 @@ SECRET_KEY = '*2n2ix3c86#2z)%*qytxo-k54r5r$k4&ao949u9k6sol^$7_ww'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -119,4 +119,3 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # STATIC_ROOT = '/static'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
