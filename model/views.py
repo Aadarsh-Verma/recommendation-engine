@@ -82,7 +82,7 @@ def index(request):
         search = tmdb.Search()
         response = search.movie(query=movie_name)
         movie_id = search.results[0]['id']
-
+        async_time_start = time.time()
         # Movie Info
         movie_info = response['results'][0]
 
@@ -97,11 +97,12 @@ def index(request):
 
         # Similiar Movie Posters
         similiar_posters = get_similar_movies_poster(movie_list)
+
         movies_with_posters = []
         for i in range(0, len(similiar_posters)):
             temp = [movie_list[i], similiar_posters[i]]
             movies_with_posters.append(temp)
-
+        async_time_end = time.time()
         context = {
             'movies_with_posters': movies_with_posters,
             'movies': movie_list,
@@ -111,6 +112,8 @@ def index(request):
             'genre_info': genre_info,
             'similiar_posters': similiar_posters,
             'time_taken': time.time() - tick,
+            'async_time_taken': async_time_end - async_time_start,
+
         }
 
         return render(request, 'index.html', context)
